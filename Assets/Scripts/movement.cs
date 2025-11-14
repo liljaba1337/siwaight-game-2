@@ -50,6 +50,11 @@ public class movement : MonoBehaviour
         {
             transform.position += (transform.right) * Time.deltaTime * movementspeed;
         }
+        if (Input.GetKeyDown(KeyCode.F11))
+        {
+            Screen.fullScreen = !Screen.fullScreen;
+            if(!Screen.fullScreen) Screen.SetResolution(800, 600, false);
+        }
 
 
         if (Input.GetKeyDown("space") && isgrounded())
