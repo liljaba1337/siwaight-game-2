@@ -18,6 +18,7 @@ public class movement : MonoBehaviour
     [SerializeField] AudioSource jump5;
     [SerializeField] AudioSource jump6;
     [SerializeField] AudioSource defaultmusic;
+    [SerializeField] Animator Player_Animator;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -59,11 +60,26 @@ public class movement : MonoBehaviour
 
         if (Input.GetKeyDown("space") && isgrounded())
         {
+
             rb.velocity = new Vector3(rb.velocity.x, jumpheight, rb.velocity.z);
+
+            Player_Animator.SetBool("Jumping", true);
+            Player_Animator.SetBool("Up", true);
+
+
+
+
             System.Random rnd = new System.Random();
             int num = rnd.Next(5);
             AudioSource[] sounds = {jump1,jump2,jump3,jump4,jump5,jump6};
             sounds[num].Play();
+
+
+        }
+
+        if (Input.GetKeyDown("0"))
+        {
+            Debug.Log(transform.position.y);
         }
     }
 
